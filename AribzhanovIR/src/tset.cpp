@@ -12,10 +12,19 @@ static const int FAKE_INT = -1;
 static TBitField FAKE_BITFIELD(1);
 static TSet FAKE_SET(1);
 
-TSet::TSet(int mp) :BitField(mp),MaxPower(mp){}
+TSet::TSet(int mp): BitField(mp) {
+
+    if (mp >= 0) {
+        
+        MaxPower = mp;
+    }
+    else
+        throw std::out_of_range("");
+}
 
 // конструктор копирования
 TSet::TSet(const TSet &s) : BitField(s.BitField), MaxPower(s.MaxPower){}
+
 
 // конструктор преобразования типа
 TSet::TSet(const TBitField &bf) : BitField(bf), MaxPower(bf.GetLength())
@@ -34,7 +43,7 @@ int TSet::GetMaxPower(void) const // получить макс. к-во эл-т�
 
 int TSet::IsMember(const int Elem) const // элемент множества?
 {   
-    if (Elem > 0 && Elem >= MaxPower) {
+    if (Elem < 0 || Elem >= MaxPower) {
         throw std:: out_of_range("");
     }
 
@@ -43,7 +52,7 @@ int TSet::IsMember(const int Elem) const // элемент множества?
 
 void TSet::InsElem(const int Elem) // включение элемента множества
 {   
-    if (Elem > 0 && Elem >= MaxPower) {
+    if (Elem < 0 || Elem >= MaxPower) {
         throw std::out_of_range("");
     }
     BitField.SetBit(Elem);
@@ -51,7 +60,7 @@ void TSet::InsElem(const int Elem) // включение элемента мно
 
 void TSet::DelElem(const int Elem) // исключение элемента множества
 {
-    if (Elem > 0 && Elem >= MaxPower) {
+    if (Elem < 0 || Elem >= MaxPower) {
         throw std::out_of_range("");
     }
     BitField.ClrBit(Elem);
@@ -80,9 +89,9 @@ int TSet::operator!=(const TSet &s) const // сравнение
 
 TSet TSet::operator+(const TSet &s) // объединение
 {
-    if (MaxPower != s.MaxPower) {
+    /*if (MaxPower != s.MaxPower) {
         throw std::invalid_argument("");
-}
+}*/
     TBitField result = BitField | s.BitField;
     return TSet(result);
 }
@@ -103,10 +112,8 @@ TSet TSet::operator-(const int Elem) // разность с элементом
 
 TSet TSet::operator*(const TSet &s) // пересечение
 {
-    if (MaxPower != s.MaxPower) {
-        throw std::invalid_argument("");
-    }
-    TBitField result = BitField & s.BitField;
+    
+    TBitField result = BitField & s.BitField; 
     return TSet(result);
 }
 
@@ -126,6 +133,6 @@ istream &operator>>(istream &istr, TSet &s) // ввод
 
 ostream& operator<<(ostream &ostr, const TSet &s) // вывод
 {
-    ostr << s.BitField;
+    ostr << s.BitField << "\t";
     return ostr;
 }

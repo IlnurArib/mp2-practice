@@ -39,6 +39,7 @@
 *.out
 *.app
 
+
 # Build directories
 build/
 Build/
@@ -84,3 +85,7 @@ Release/
 *.iobj
 *.ipdb
 
+#General
+sln/
+*.slnx
+*.sln

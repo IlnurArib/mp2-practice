@@ -1,5 +1,0 @@
-if(EXISTS "C:/Users/Ilnur/Desktop/labor1/mp2-practice/AribzhanovIR/sln/test/test_set_e3b0c442_Release_tests.cmake")
-  include("C:/Users/Ilnur/Desktop/labor1/mp2-practice/AribzhanovIR/sln/test/test_set_e3b0c442_Release_tests.cmake")
-else()
-  add_test(test_set_NOT_BUILT test_set_NOT_BUILT)
-endif()
