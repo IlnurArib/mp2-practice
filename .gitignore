@@ -67,3 +67,39 @@ vcpkg_installed/
 # test output & cache
 Testing/
 .cache/
+# CMake / build
+build/
+out/
+cmake-build-*/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+CTestTestfile.cmake
+_deps/
+*.stamp
+
+# Generated solution
+sln/
+*.slnx
+*.sln
+*.vcxproj
+*.vcxproj.*
+*.user
+
+# Visual Studio
+.vs/
+*.suo
+*.ipch
+*.vsidx
+x64/
+Debug/
+Release/
+
+# Compiled
+*.obj
+*.exe
+*.lib
+*.pdb
+*.tlog
+*.lastbuildstate
+*.recipe
