@@ -14,7 +14,7 @@ TBitField::TBitField(int len)
     if (len < 0)
         throw invalid_argument("ОТРИЦАТЕЛЬНАЯ ДЛИНА");
     BitLen = len;
-    MemLen = (BitLen + BITS_IN_ELEMENT_MINUS_ONE) / BITS_IN_ELEMENT; // todo: вынести в константы #define или static const
+    MemLen = (BitLen + BITS_IN_ELEMENT_MINUS_ONE) / BITS_IN_ELEMENT; 
     pMem = new TELEM[MemLen]();
 
 }
@@ -36,12 +36,12 @@ TBitField::~TBitField()
 
 int TBitField::GetMemIndex(const int n) const// в каком элементe pMem находится элемент с номером n?
 {
-    return n/ BITS_IN_ELEMENT; // todo: вынести в константы #define или static const
+    return n/ BITS_IN_ELEMENT;
 }
 
 TELEM TBitField::GetMemMask(const int n) const // битовая маска для бита n
 {
-    return (TELEM)1<<(n % BITS_IN_ELEMENT); // todo: вынести в константы #define или static const
+    return (TELEM)1<<(n % BITS_IN_ELEMENT); 
 }
 
 // доступ к битам битового поля
@@ -116,7 +116,7 @@ int TBitField::operator!=(const TBitField &bf) const // сравнение
   return !(*this == bf);
 }
 
-TBitField TBitField::operator|(const TBitField& bf) // операция "или" // todo
+TBitField TBitField::operator|(const TBitField& bf) // операция "или" 
 {
     TBitField res(max(BitLen, bf.BitLen));
     int i = 0;
@@ -134,7 +134,7 @@ TBitField TBitField::operator|(const TBitField& bf) // операция "или"
     return res;
 }
 
-TBitField TBitField::operator&(const TBitField &bf) // операция "и" // todo
+TBitField TBitField::operator&(const TBitField &bf) // операция "и" 
 {
     TBitField res(max(BitLen, bf.BitLen));
 
