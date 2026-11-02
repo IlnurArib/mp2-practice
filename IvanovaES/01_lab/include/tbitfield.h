@@ -7,6 +7,7 @@
 
 #ifndef __BITFIELD_H__
 #define __BITFIELD_H__
+#define BITS 32
 
 #include <iostream>
 #include <algorithm>
